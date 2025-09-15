@@ -7,7 +7,11 @@ const Header = () => {
       <div className="flex items-center">
         <h1 className="font-medium text-xl ml-10 mr-96">Dashboard</h1>
         <Link to="/">
-          <img src={profileIcon} alt="Profile Icon" className="ml-96 pr-20" />
+          <img
+            src={profileIcon}
+            alt="Profile Icon"
+            className="ml-92 pr-20 h-10"
+          />
         </Link>
       </div>
     </div>
