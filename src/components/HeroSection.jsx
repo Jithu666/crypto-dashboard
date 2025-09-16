@@ -227,7 +227,7 @@ const Main = () => {
 
           {/* View All */}
           <div className="flex flex-col pl-6 pr-6 pb-4">
-            <Link to="/">
+            <Link to="/transactions">
               <p className="flex justify-center font-medium bg-gray-100 rounded-lg py-1">
                 View All
               </p>
