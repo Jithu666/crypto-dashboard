@@ -14,7 +14,7 @@ import removeIcon from "../assets/removeIcon.svg";
 
 const Main = () => {
   return (
-    <div className="flex flex-col flex-1 bg-gray-100 pr-6">
+    <div className="flex flex-col flex-1 bg-gray-100 pr-13">
       <div className="flex flex-row max-w-fit h-24 ml-14 rounded-2xl bg-white p-4 pl-6 mt-4">
         {/* First Div */}
         <div className="flex flex-col space-x-16">
