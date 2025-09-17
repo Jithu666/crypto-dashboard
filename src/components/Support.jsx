@@ -1,8 +1,42 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import emailIcon from "../assets/Email.svg";
 import chatIcon from "../assets/ChatIcon.svg";
 
 const Support = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    message: "",
+    tnc: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleClear = () => {
+    setFormData({
+      name: "",
+      surname: "",
+      email: "",
+      message: "",
+      tnc: false,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("Form Submitted", formData);
+    handleClear();
+  };
+
   return (
     <div className="flex flex-row h-screen bg-gray-100">
       {/* Text Container */}
@@ -46,7 +80,7 @@ const Support = () => {
             You will receive response within 24 hours of time of submit.
           </p>
           <div className="flex mb-2">
-            <form method="POST">
+            <form method="POST" onSubmit={handleSubmit}>
               {/* First Container */}
               <div className="flex flex-row mt-2">
                 <div className="flex flex-col text-sm">
@@ -56,6 +90,9 @@ const Support = () => {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="border border-gray-400/55 rounded-md px-4 text-gray-400 py-1"
                     placeholder="James"
                   />
@@ -67,6 +104,9 @@ const Support = () => {
                   <input
                     type="text"
                     id="surname"
+                    name="surname"
+                    value={formData.surname}
+                    onChange={handleChange}
                     className="border border-gray-400/55 rounded-md px-4 text-gray-400 py-1"
                     placeholder="Arthur"
                   />{" "}
@@ -82,6 +122,9 @@ const Support = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="name@gmail.com"
                   className="border border-gray-400/55 rounded-md px-4 text-gray-400 py-1"
                 />
@@ -96,6 +139,9 @@ const Support = () => {
                 <textarea
                   type="text"
                   id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={3}
                   placeholder="Your Message"
                   className="border border-gray-400/55 rounded-md px-4 text-gray-400 py-1"
@@ -109,6 +155,9 @@ const Support = () => {
                   <input
                     type="checkbox"
                     id="tnc"
+                    name="tnc"
+                    value={formData.tnc}
+                    onChange={handleChange}
                     className="border-gray-500 ml-1"
                   />
                   <label htmlFor="" className="ml-2">
@@ -125,7 +174,10 @@ const Support = () => {
               {/* Buttons Container */}
               <div className="flex flex-col mt-4">
                 <div className="flex flex-row">
-                  <button className="bg-gray-500/50 w-full py-1 rounded-md text-gray-500 font-medium">
+                  <button
+                    className="bg-gray-500/50 w-full py-1 rounded-md text-gray-500 font-medium"
+                    type="submit"
+                  >
                     Send a Message
                   </button>
                 </div>
